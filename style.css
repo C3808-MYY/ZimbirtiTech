@@ -132,6 +132,7 @@ main .productAndDescription aside > div {
 
 main .productAndDescription aside > div div {
   width: 35%;
+  text-align: center;
 }
 
 main .productAndDescription aside > div div .asideDescText {

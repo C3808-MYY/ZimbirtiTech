@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <img src="./assets/logo.png" alt="">
         <div>
             <ul class="navbarlinks">
@@ -27,7 +27,7 @@
         </div>
     </header>
     <main>
-        <section class="cart">
+        <section id="cartBar" class="cart">
             <ul id="cartList">
                 <li>Sample</li>
                 <li class="cartTitle">Title</li>
@@ -183,7 +183,7 @@
                     <p class="asideDescText">Total</p>
                     <p>109.98₺</p>
                 </div>
-                <button id="addToCart" onclick="addToCart()">Add to Cart</button>
+                <a id="addToCart" href="#header" onclick="addToCart()">Add to Cart</a>
             </div>
             <p id="asideDescription">Description</p>
         </aside>

@@ -61,7 +61,7 @@ const choose = function (id) {
 
   //aside total
   let total = document.querySelectorAll(`.productDescription p`)[4];
-  total.innerHTML = quantity.value * Number(productPrice.slice(0, -1)) + "₺";
+  total.innerHTML = (quantity.value * Number(productPrice.slice(0, -1))).toFixed(2) + "₺";
 };
 
 //calculating totalprice
@@ -70,7 +70,7 @@ const calcTotal = function () {
   let total = document.querySelectorAll(`.productDescription p`)[4];
   let asidePrice = document.querySelectorAll(`.productDescription>p`)[1]
     .innerHTML;
-  total.innerHTML = quantity.value * Number(asidePrice.slice(0, -1)) + "₺";
+  total.innerHTML = (quantity.value * Number(asidePrice.slice(0, -1))).toFixed(2) + "₺";
 };
 //aside bar closer
 const close = function () {
@@ -93,16 +93,12 @@ const addToCart = () => {
     let cartQuantity = document.querySelector(`#Cart${productID} input`);
     cartQuantity.value = Number(cartQuantity.value) + Number(quantity);
     let cartLi = document.querySelectorAll(`#Cart${productID} li`);
-    cartLi[4].innerHTML = (cartQuantity.value*Number(cartLi[2].innerHTML.slice(0,-1))).toFixed(2) + "₺";
+    cartLi[4].innerHTML = (Number(cartQuantity.value) * Number(cartLi[2].innerHTML.slice(0, -1))).toFixed(2) + "₺";
   }
 
 
 
   // Number((6.688689).toFixed(1)); // 6.7
-
-
-
-
   else {
     //creating new ul for new item to cart list
     let newItem = document.createElement("ul");
@@ -131,19 +127,22 @@ const addToCart = () => {
     //creating and assinging quantity information
     let newInput = document.createElement("input");
     newInput.value = quantity;
+    newInput.type = "number";
+    newInput.onchange = reCalcTotal;
     arrayLi[3].appendChild(newInput);
 
     //calculating and assigning total price information
-    arrayLi[4].innerHTML = (newInput.value*Number(arrayLi[2].innerHTML.slice(0,-1))).toFixed(2) + "₺";
+    arrayLi[4].innerHTML = (newInput.value * Number(arrayLi[2].innerHTML.slice(0, -1))).toFixed(2) + "₺";
     // console.log(arrayLi[3]);
-    
+
     //creating remove button
     let newRemove = document.createElement("button");
     newRemove.innerHTML = "X";
+    newRemove.className = "remove";
     arrayLi[5].appendChild(newRemove);
 
     //appending lis to ul
-    for(let i = 0;i<6;i++){
+    for (let i = 0; i < 6; i++) {
       newItem.appendChild(arrayLi[i]);
     }
 
@@ -153,5 +152,10 @@ const addToCart = () => {
     // adding id of new item to array to check if it exists in the list
     arrayID.push(newItem.id);
   }
-  
 };
+
+const reCalcTotal = () => {
+  let cartQuantity = document.querySelector(`#Cart${productID} input`);
+  let cartLi = document.querySelectorAll(`#Cart${productID} li`);
+  cartLi[4].innerHTML = (Number(cartQuantity.value) * Number(cartLi[2].innerHTML.slice(0, -1))).toFixed(2) + "₺";
+}

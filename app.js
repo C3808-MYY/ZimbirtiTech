@@ -28,6 +28,18 @@ const productDescs = [
 let arrayID = [];
 let productID;
 
+const remove = (id) => {
+  let cartUl = document.querySelectorAll(`#cartBar ul`);
+  if(cartUl.length == 1){
+    document.getElementById("isEmpty").innerHTML = "is empty.";
+    document.getElementById("cartList").style.display = "none";
+  }
+  else{
+    document.getElementById("cartList").style.display = "flex";
+    document.getElementById("isEmpty").innerHTML = `${cartUl.length -1} Items`;
+  }
+}
+remove();
 const choose = function (id) {
   let newIndex = Number(id.slice(7));
   productID = id;
@@ -98,7 +110,6 @@ const addToCart = () => {
 
 
 
-  // Number((6.688689).toFixed(1)); // 6.7
   else {
     //creating new ul for new item to cart list
     let newItem = document.createElement("ul");
@@ -139,6 +150,7 @@ const addToCart = () => {
     let newRemove = document.createElement("button");
     newRemove.innerHTML = "X";
     newRemove.className = "remove";
+    newRemove.onclick = remove;
     arrayLi[5].appendChild(newRemove);
 
     //appending lis to ul

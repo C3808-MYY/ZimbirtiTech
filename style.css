@@ -214,9 +214,25 @@ main .productAndDescription aside #addToCart + p {
   padding: 20px 0;
 }
 
+.cart p {
+  margin-left: 120px;
+}
+
+.cart p #yourCart {
+  font-size: 40px;
+  font-family: 'Pacifico', cursive;
+}
+
+.cart p #isEmpty {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  margin-left: 10px;
+  color: gray;
+}
+
 .cart ul {
   list-style-type: none;
-  margin: 0 0 20px 40px;
+  margin: 20px 0 0px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
